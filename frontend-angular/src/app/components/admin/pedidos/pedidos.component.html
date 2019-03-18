@@ -1,0 +1,24 @@
+<p>
+  Estos son todos los pedidos!
+</p>
+
+<button type="button" class="btn btn-danger m-4" (click)="back()">Cancelar</button>
+<br><br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Dirección</th>
+      <th scope="col">Numero</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Detalles</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let o of orders; let i=index">
+      <td>{{o.datosPago.address}}</td>
+      <td>{{o.datosPago.phone}}</td>
+      <td>{{o.precioFinal}}</td>
+      <td><button type="button" class="btn btn-warning"  (click)="info(i)">Ver mas</button></td>
+    </tr>
+  </tbody>
+</table>

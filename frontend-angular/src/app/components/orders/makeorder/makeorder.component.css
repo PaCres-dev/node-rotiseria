@@ -1,0 +1,12 @@
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    font-size: 15px;
+    text-align: center; 
+}
+
+#data {
+    background-color: #F2EEED;
+    border: solid 1px #6196ed;
+}

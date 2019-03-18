@@ -1,0 +1,17 @@
+.footer {
+	bottom: 0;
+  	width: 100%;
+  	line-height: 30px; /* Vertically center the text there */
+  	background-color: #BA1818;
+  	padding: 20px 0px 0px;
+}
+
+.footer .container {
+	height: 100%; /* Set the fixed height of the footer here */
+}
+
+.copy {
+	background-color: #EF5151;
+	padding: 15px 0px 0px;
+	font-size: 13px;
+}

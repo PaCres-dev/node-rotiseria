@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top mb-4">
+	<a class="navbar-brand" [routerLink]="['']">Los Abuelos</a>
+	<div class="navbar-collapse" id="navbarsExampleDefault">
+	   	<ul class="navbar-nav mr-auto">
+	    	<li class="nav-item" routerLinkActive="active">
+	        	<a class="nav-link" [routerLink]="['home']">Inicio</a>
+	      	</li>
+	      	<li class="nav-item" routerLinkActive="active">
+	        	<a class="nav-link" [routerLink]="['menu']">Carta</a>
+	      	</li>
+	      	<li class="nav-item" routerLinkActive="active">
+	        	<a class="nav-link" [routerLink]="['contact']">Contacto</a>
+	      	</li>
+	    </ul>
+	    <div class="pedidos-button my-2 my-lg-0">
+	    	<a *ngIf="isAuthenticated" href="/login"><button class="btn btn-sm btn-success" (click)="logout()" style="margin-right: 15px;">Logout</button></a>
+			<button class="btn btn-warning my-2 my-sm-0" type="button" (click)="isLogged()">PEDÍ ONLINE</button>
+	    </div>
+	</div>
+</nav>

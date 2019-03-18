@@ -1,0 +1,30 @@
+<p>
+  add works!
+</p>
+
+<form method="post" (ngSubmit)="alta()" #formtvshow="ngForm">
+  <div class="form-group">
+    <label for="name">Nombre: </label>
+    <input type="text" class="form-control" id="name" placeholder="Enter food Title" name="title" [(ngModel)]="food.name" >
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input type="description" class="form-control" id="description" placeholder="Enter food description" name="description" [(ngModel)]="food.description" >
+  </div>
+  <div class="form-group">
+    <label for="price">Precio</label>
+    <input type="text" class="form-control" id="price" placeholder="Enter food price" name="price" [(ngModel)]="food.price" >
+  </div>
+  <div class="form-group">
+    <label for="imgURL">Numero del 1 al 9</label>
+    <input type="text" class="form-control" id="imgURL" name="imgURL" [(ngModel)]="food.imgURL" >
+  </div>
+  <div class="form-group row">
+    <div class="input-group col-md-8">
+      <button type="submit" class="btn btn-primary">Guardar</button>
+      <button type="button" (click)="cancelar()" class="btn btn-danger">Cancelar</button>
+    </div>
+  </div>
+</form>
+
+{{ food | json }}

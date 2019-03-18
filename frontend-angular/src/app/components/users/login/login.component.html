@@ -1,0 +1,20 @@
+<div class="container">
+	<h2 class="center">INICIAR SESIÓN</h2>
+	<div *ngIf="message!=''" class="alert alert-primary" role="alert">
+		{{message}}
+	</div>
+	<form method="post" (ngSubmit)="login()" #form="ngForm">
+		<div class="form-group">
+			<label for="email">Email:</label>
+			<input type="text" class="form-control" id="email"  placeholder="Escribe tu email aquí" name="email" [(ngModel)]="loginUser.email">
+		</div>
+		<div class="form-group">
+			<label for="password">Contraseña:</label>
+			<input type="password" class="form-control" id="password" placeholder="Escribe tu contraseña aquí" name="password" [(ngModel)]="loginUser.password">
+		</div>
+		<div class="form-group">
+			<a href="/makeorder"><button type="submit" class="btn btn-success">Sesión</button></a>
+		</div>
+	</form>
+	<div>Si no tenés cuenta registrate <button style="color: blue;" (click)="register()">aqui</button></div>
+</div>

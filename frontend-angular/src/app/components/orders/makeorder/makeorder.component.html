@@ -1,0 +1,113 @@
+<div class="container">
+	<div *ngIf="step== 1" class="row" id="step1"> <!--STEP 1-->
+		<div id="titlemake" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+			<h2>Elija su pedido</h2>
+			<hr>
+		</div>
+		<!-- MENU TO SELECT / CARDS-->
+		<div class="row col-lg-8 col-md-8 col-sm-8 col-xs-12">
+			<div *ngFor="let food of foods; let i=index" class="col-md-4">
+				<div class="card mb-4 shadow-sm">
+					<img class="card-img-top" src="assets/images/menu/{{food.imgURL}}.jpg" alt="Card image cap">
+					<div class="card-body">
+						<h6 class="name">{{food.name}}</h6>
+						<p class="card-text">{{food.description}}</p>
+						<div class="d-flex justify-content-between align-items-center">
+							<button type="button" class="btn btn-sm btn-success" (click)="add(food)">Agregar</button>
+							<small class="text-muted">${{food.price}}</small>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>																		
+		<!-- SELECTED FOOD TO ORDER -->
+		<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+			<h4 class="alert alert-warning text-center">TU PEDIDO</h4>
+			<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">Cant.</th>
+							<th scope="col">Pedidos</th>
+							<th scope="col">Pecios</th>
+							<th scope="col">Borrar</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let selected of selectedFoods; let i=index">
+							<td><input type="number" (input)="change(i, $event.target.value)" min="1" max="100" value="{{selected.quantity}}" style="width:65%; text-align: center;"></td>
+							<td>{{selected.name}}</td>
+							<td>{{selected.price}}</td>
+							<td><button type="button" class="btn btn-warning"  (click)="delFood(i)">X</button></td>
+						</tr>
+					</tbody>
+			</table>
+			<div class="text-warning bg-dark p-2 mb-2">Total a pagar: {{totalPrice}}</div>
+			<button [disabled]="!selectedFoods[0]" type="button" class="btn btn-primary" (click)="selected(selectedFoods)">Siguiente</button>
+		</div>
+	</div> <!-- END STEP 1-->
+
+	<div @fade *ngIf="step== 2" class="row" id="step1"> <!--STEP 2-->
+		<div id="titlemake" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+			<h2>Confirme su pedido</h2>
+			<hr>
+		</div>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Cant.</th>
+							<th scope="col">Pedidos</th>
+							<th scope="col">Pecios</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let selected of selectedFoods; let i=index">
+							<td>{{selected.quantity}}</td>
+							<td>{{selected.name}}</td>
+							<td>{{selected.price}}</td>
+						</tr>
+					</tbody>
+			</table>
+			<div class="text-warning bg-dark p-2 mb-2">Total a pagar: ${{totalPrice}}</div>
+		</div>
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 p-4 mb-2 mt-2" id="data">
+			<form method="post" (ngSubmit)="makeReq()" #form="ngForm">
+
+				<div class="form-group">
+				<label for="address">Dirección de entrega:</label>
+				<input type="text" class="form-control" id="address"  name="address" placeholder="Ingrese la dirección donde se mandara el pedido" [(ngModel)]="req.address">
+				</div>
+
+				<div class="form-group">
+				<label for="payMethod">Metodo de pago:</label>
+					<ul style="list-style-type: none">
+						<li class=" p-2 m-2">
+							<h6>Efectivo</h6>
+							<div style="display: inline-block;">
+								Ingresá con cuánto vas a pagar: $<input type="number" id="payMethod" min="{{totalPrice}}" name="payMethod" class="m-2" style="display: inline;" [(ngModel)]="req.payMethod">
+							</div>
+						</li>
+						<li class="text-muted p-2 m-2">
+							<h6>Tarjeta</h6>
+							<small>Proximamente*</small>
+						</li>
+					</ul>
+				</div>
+
+				<div class="form-group">
+					<label for="phone">Numero de telefono:</label>
+					<input type="text" id="phone" name="phone" class="input-medium bfh-phone m-2" [(ngModel)]="req.phone">
+				</div>
+
+				<div class="form-group">
+					<label for="add">Agregar información:</label>
+					<textarea class="form-control" rows="5" id="add" name="add" [(ngModel)]="req.add"></textarea>
+				</div>
+
+				<button class="btn btn-danger m-2" (click)="cancel()">Cancelar</button>
+				<button type="submit" class="btn btn-primary m-2 pull-right">Realizar el pedido</button>
+			</form>
+			{{ req | json }}
+		</div>
+	</div><!-- END STEP 2-->
+</div><!--End container-->

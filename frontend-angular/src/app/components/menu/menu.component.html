@@ -1,0 +1,17 @@
+<div class="album py-5">
+    <div class="container">
+      	<div class="row">
+	        <div *ngFor="let food of foods; let i=index" class="col-md-4">
+	          <div class="card mb-4 shadow-sm">
+	            <img class="card-img-top" src="assets/images/menu/{{food.imgURL}}.jpg" alt="Card image cap">
+	            <div class="card-body">
+	            	<h6 class="name">{{food.name}}</h6>
+									<p class="card-text">{{food.description}}</p>
+									<button class="btn btn-sm"></button>
+	                <small class="text-muted">${{food.price}}</small>
+	            </div>
+	          </div>
+	        </div>
+      	</div><!--End row-->
+    </div><!--End container-->
+</div>
