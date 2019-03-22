@@ -34,7 +34,9 @@ app.use(session({
 	}
 }));
 
-mongoose.connect('mongodb://localhost/losabuelos', { useNewUrlParser: true, useCreateIndex: true }, function(err, res) {
+const urldb= 'mongodb+srv://PaCres:<password>@losabuelos-spool.mongodb.net/test?retryWrites=true' || 'mongodb://localhost/losabuelos'; 
+
+mongoose.connect(urldb, { useNewUrlParser: true, useCreateIndex: true }, function(err, res) {
 	if(err) {
 		console.log('ERROR: connecting to Database. ' + err);
 	} else {
