@@ -34,7 +34,7 @@ app.use(session({
 	}
 }));
 
-const urldb= 'mongodb+srv://PaCres:<password>@losabuelos-spool.mongodb.net/test?retryWrites=true' || 'mongodb://localhost/losabuelos'; 
+const urldb= 'mongodb+srv://PaCres:Riverkpo1998-@losabuelos-spool.mongodb.net/test?retryWrites=true' || 'mongodb://localhost/losabuelos'; 
 
 mongoose.connect(urldb, { useNewUrlParser: true, useCreateIndex: true }, function(err, res) {
 	if(err) {
