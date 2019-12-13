@@ -11,13 +11,13 @@ module.exports = function(app) {
       port: 587,
       auth: {
         user: 'm7zhqyvqkvw24rzr@ethereal.email',
-        pass: 'PuzjMjJve7nm3E78JV'
+        pass: 'pass'
       }
     });
 
     let mailOptions = {
       from: req.body.nombre+" "+req.body.apellido+" <"+req.body.email+">", // sender address
-      to: '<rodolforadio2012@gmail.com>', // list of receivers
+      to: '<testing@gmail.com>', // list of receivers
       subject: req.body.asunto, // Subject line
       text: req.body.mensaje, // plain text body
     };

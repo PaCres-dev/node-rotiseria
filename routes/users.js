@@ -4,7 +4,7 @@ module.exports = function(app) {
   const User     = require('../models/users.js');
 
   //Login
-  findUsers = function(req, res, next) {
+  findUsers = function(req, res) {
     console.log(req.body);
 
     var email = req.body.email;
@@ -32,7 +32,7 @@ module.exports = function(app) {
   }
 
   //Register
-  createUser = function(req, res, next) {
+  createUser = function(req, res) {
     console.log('POST');
     console.log(req.body);
 
